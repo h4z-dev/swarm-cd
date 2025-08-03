@@ -72,6 +72,7 @@ jobs:
         if: ${{ github.ref_name == 'main' && steps.release.outputs.new_release_published == 'true' }}
         with:
           push: true
+          platforms: linux/amd64, linux/arm64
           tags: |
             ${{ vars.DOCKERHUB_USERNAME }}/swarm-cd:latest
             ${{ vars.DOCKERHUB_USERNAME }}/swarm-cd:${{ steps.release.outputs.new_release_version }}
