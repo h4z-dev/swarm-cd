@@ -1,5 +1,5 @@
 # Stage 1: Build the frontend
-FROM node:22-alpine3.19 AS frontend-build
+FROM node:22-alpine3.22 AS frontend-build
 WORKDIR /ui
 COPY ui/package.json ui/package-lock.json ./
 RUN npm install
@@ -9,7 +9,7 @@ RUN npm run build
 RUN npm run test
 
 # Stage 2: Build the backend
-FROM golang:1.22.5 AS backend-build
+FROM golang:1.24.5-alpine3.22 AS backend-build
 WORKDIR /backend
 COPY go.mod go.sum ./
 RUN go mod download
